@@ -1,5 +1,5 @@
 {
-  description = "Your new nix config";
+  description = "Nix config (flake) for sharing (home + work + public)";
 
   inputs = {
     # Nixpkgs
