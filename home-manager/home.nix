@@ -55,8 +55,8 @@
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   home.packages = with pkgs; [
-    shfmt
-    yadm
+    shfmt # Formatter for shell scripts
+    yadm # Dotfile manager
   ];
 
   programs.home-manager.enable = true;
