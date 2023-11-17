@@ -1,5 +1,6 @@
-# This is your home-manager configuration file
-# Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
+# This file contains the subset of home-manager configuration that is common
+# to everything. It is intended to be imported by all my home-manager
+# configuration files.
 {
   inputs,
   outputs,
@@ -48,16 +49,9 @@
   };
 
   home = {
-    username = "samh";
-    homeDirectory = "/home/samh";
+    username = lib.mkDefault "samh";
+    homeDirectory = lib.mkDefault "/home/${config.home.username}";
   };
-
-  # Add stuff for your user as you see fit:
-  # programs.neovim.enable = true;
-  home.packages = with pkgs; [
-    shfmt # Formatter for shell scripts
-    yadm # Dotfile manager
-  ];
 
   programs.home-manager.enable = true;
   #programs.git.enable = true;
@@ -66,5 +60,5 @@
   systemd.user.startServices = "sd-switch";
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  home.stateVersion = "23.05";
+  home.stateVersion = lib.mkDefault "23.05";
 }
