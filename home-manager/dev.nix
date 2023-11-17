@@ -4,6 +4,9 @@
   imports = [./global];
   home.packages =
     (with pkgs; [
+      bat # cat/less with syntax highlighting
+      bfs # A breadth-first version of the UNIX find command
+      ripgrep # fast recursive grep (like a faster ack)
       shfmt # Formatter for shell scripts
       yadm # Dotfile manager
     ])
