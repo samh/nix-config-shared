@@ -4,12 +4,14 @@
   imports = [./global];
   home.packages =
     (with pkgs; [
-      shfmt
-      yadm
+      shfmt # Formatter for shell scripts
+      yadm # Dotfile manager
     ])
     # Add packages from nixpkgs-unstable.
     # Usually for things where we prefer the latest version.
-    ++ (with pkgs.unstable; [rclone]);
+    ++ (with pkgs.unstable; [
+      rclone # manage files on cloud storage
+    ]);
 
   #programs.git.enable = true;
 }
