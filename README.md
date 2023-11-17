@@ -3,6 +3,12 @@
 This repository is intended to contain Nix/NixOS configuration that can be
 used across my personal and work configurations.
 
+## Quick Reference
+| Command | Description |
+| --- | --- |
+| `nix flake update --commit-lock-file` | Update all flake dependencies |
+| `nix fmt` | Format all Nix files |
+
 ## Non-NixOS Home Manager Configuration
 
 - Run `home-manager switch --flake .` to apply your home
