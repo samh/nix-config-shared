@@ -9,6 +9,7 @@
       bfs # A breadth-first version of the UNIX find command
       dua # Disk usage analyzer (like ncdu)
       ripgrep # fast recursive grep (like a faster ack)
+      shellcheck # Linter for shell scripts
       shfmt # Formatter for shell scripts
       yadm # Dotfile manager
     ])
@@ -22,5 +23,9 @@
   #programs.git.enable = true;
   programs.yazi.enable = true; # terminal file manager
   programs.zoxide.enable = true; # 'cd' replacement
-  programs.zsh.enable = true;
+
+  # To make this work with yadm, need to set up zshrc
+  # to source .commonrc and move .zshenv (maybe source
+  # .zshenv.yadm from home-manager .zshenv?)
+  #programs.zsh.enable = true;
 }
