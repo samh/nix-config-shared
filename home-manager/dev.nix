@@ -13,6 +13,7 @@
     # Add packages from nixpkgs-unstable.
     # Usually for things where we prefer the latest version.
     ++ (with pkgs.unstable; [
+      distrobox # create podman containers with tight host integration
       rclone # manage files on cloud storage
     ]);
 
