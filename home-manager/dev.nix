@@ -19,13 +19,34 @@
       distrobox # create podman containers with tight host integration
       rclone # manage files on cloud storage
     ]);
+  home.shellAliases = {
+    "venv" = "uv venv --seed";
+  };
 
-  #programs.git.enable = true;
-  programs.yazi.enable = true; # terminal file manager
-  programs.zoxide.enable = true; # 'cd' replacement
-
-  # To make this work with yadm, need to set up zshrc
-  # to source .commonrc and move .zshenv (maybe source
-  # .zshenv.yadm from home-manager .zshenv?)
-  #programs.zsh.enable = true;
+  programs = {
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
+    # git.enable = true;
+    yazi.enable = true; # terminal file manager
+    zoxide.enable = true; # 'cd' replacement
+    # To make programs.zsh work with yadm, need to set up zshrc
+    # to source .commonrc and move .zshenv (maybe source
+    # .zshenv.yadm from home-manager .zshenv?)
+    zsh = {
+      enable = true;
+      # Set up zshrc to source .commonrc
+      initExtra = ''
+        if [ -f ~/.commonrc ]; then
+          source ~/.commonrc
+        fi
+      '';
+      history = {
+        extended = true;
+        ignoreAllDups = true;
+        size = 1000000000;
+      };
+    };
+  };
 }

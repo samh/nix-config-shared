@@ -3,8 +3,7 @@
 {pkgs, ...}: {
   # You can import other home-manager modules here
   imports = [./dev.nix];
-  home.packages =
-    (with pkgs; [
-      vscode
-    ]);
+  home.packages = with pkgs; [
+    vscode
+  ];
 }
