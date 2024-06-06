@@ -8,6 +8,7 @@ used across my personal and work configurations.
 | --- | --- |
 | `nix flake update --commit-lock-file` | Update all flake dependencies |
 | `nix fmt` | Format all Nix files |
+| `nh home switch -a -c samh@dev-gui .` | Apply home configuration using `nh` |
 
 ## Non-NixOS Home Manager Configuration
 - Run the initial setup ("Standalone setup" is the only option for non-NixOS;

@@ -8,6 +8,7 @@
       bat # cat/less with syntax highlighting
       bfs # A breadth-first version of the UNIX find command
       dua # Disk usage analyzer (like ncdu)
+      nh # Yet another nix cli helper
       ripgrep # fast recursive grep (like a faster ack)
       shellcheck # Linter for shell scripts
       shfmt # Formatter for shell scripts
