@@ -19,6 +19,7 @@
     ++ (with pkgs.unstable; [
       distrobox # create podman containers with tight host integration
       rclone # manage files on cloud storage
+      restic # backup tool
     ]);
   home.shellAliases = {
     "venv" = "uv venv --seed";
