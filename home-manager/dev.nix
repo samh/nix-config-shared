@@ -9,6 +9,7 @@
       bfs # A breadth-first version of the UNIX find command
       dua # Disk usage analyzer (like ncdu)
       nh # Yet another nix cli helper
+      nix-tree
       ripgrep # fast recursive grep (like a faster ack)
       shellcheck # Linter for shell scripts
       shfmt # Formatter for shell scripts
@@ -17,6 +18,7 @@
     # Add packages from nixpkgs-unstable.
     # Usually for things where we prefer the latest version.
     ++ (with pkgs.unstable; [
+      aider-chat # Terminal AI tool (NOTE: adds a lot of dependencies, ~2.24GB)
       distrobox # create podman containers with tight host integration
       rclone # manage files on cloud storage
       restic # backup tool
