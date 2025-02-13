@@ -64,32 +64,25 @@
 
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
-    homeConfigurations = {
+    homeConfigurations = let
+      makeSimpleHomeConfig = modules:
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+          extraSpecialArgs = {inherit inputs outputs;};
+          modules = modules;
+        };
+    in {
       # homeConfigurations can be host-specific, such as "samh@yoshi", or just
       # "samh" if you want to use the same configuration on multiple hosts.
-      "samh" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit inputs outputs;};
-        modules = [
-          # > Our main home-manager configuration file <
-          ./home-manager/dev.nix
-        ];
-      };
-      "samh@dev" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit inputs outputs;};
-        modules = [./home-manager/dev.nix];
-      };
-      "samh@dev-gui" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit inputs outputs;};
-        modules = [./home-manager/dev-gui.nix];
-      };
-      "samh@minimal" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit inputs outputs;};
-        modules = [./home-manager/minimal.nix];
-      };
+      "samh" = makeSimpleHomeConfig [./home-manager/dev.nix];
+      "samh@dev" = makeSimpleHomeConfig [./home-manager/dev.nix];
+      "samh@dev-gui" = makeSimpleHomeConfig [./home-manager/dev-gui.nix];
+      "samh@minimal" = makeSimpleHomeConfig [./home-manager/minimal.nix];
+
+      # Specific hosts; may either have their own configs, or may just be here as
+      # a reminder of which config I last used on them.
+      "samh@chris-devel-rhel8-prism12.dprism.acs" =
+        makeSimpleHomeConfig [./home-manager/dev.nix]; # prism12el8
     };
   };
 }
