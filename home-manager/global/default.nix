@@ -48,6 +48,9 @@
     };
   };
 
+  # Try to make e.g. `nix shell nixpkgs#xyz` use the same nixpkgs as home-manager
+  nix.registry.nixpkgs.flake = inputs.nixpkgs;
+
   home = {
     username = lib.mkDefault "samh";
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
