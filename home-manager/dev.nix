@@ -45,6 +45,8 @@
         if [ -f ~/.commonrc ]; then
           source ~/.commonrc
         fi
+
+        source ~/.zsh-keyboard-mapping
       '';
       history = {
         append = true;
@@ -61,5 +63,8 @@
         size = 1000000000;
       };
     };
+  };
+  home.file.".zsh-keyboard-mapping" = {
+    source = ./zsh-keyboard-mapping.zsh;
   };
 }
