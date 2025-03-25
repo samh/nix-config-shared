@@ -40,15 +40,24 @@
     # .zshenv.yadm from home-manager .zshenv?)
     zsh = {
       enable = true;
-      # Set up zshrc to source .commonrc
       initExtra = ''
+        # Source common init from yadm if it exists
         if [ -f ~/.commonrc ]; then
           source ~/.commonrc
         fi
       '';
       history = {
+        append = true;
         extended = true;
         ignoreAllDups = true;
+        ignorePatterns = [
+          "rm *"
+          "pkill *"
+          "cp *"
+        ];
+        # Do not enter command lines into the history list if the first
+        # character is a space.
+        ignoreSpace = true;
         size = 1000000000;
       };
     };
